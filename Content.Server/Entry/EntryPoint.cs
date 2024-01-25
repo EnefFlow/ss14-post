@@ -1,3 +1,4 @@
+using Content.Server._Custom.PandaSocket.Main;
 using Content.Server.Acz;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
@@ -102,6 +103,11 @@ namespace Content.Server.Entry
                 IoCManager.Resolve<ContentNetworkResourceManager>().Initialize();
                 IoCManager.Resolve<GhostKickManager>().Initialize();
                 IoCManager.Resolve<ServerInfoManager>().Initialize();
+
+                // Panda Web Start
+                IoCManager.Resolve<PandaStatusHost>().Start();
+                IoCManager.Resolve<PandaWebManager>().Initialize();
+                //Panda Web End
 
                 _voteManager.Initialize();
                 _updateManager.Initialize();

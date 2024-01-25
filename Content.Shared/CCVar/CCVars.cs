@@ -1995,5 +1995,20 @@ namespace Content.Shared.CCVar
 
         public static readonly CVarDef<bool> GatewayGeneratorEnabled =
             CVarDef.Create("gateway.generator_enabled", true);
+
+        /*
+     * Panda Socket
+     */
+        public static readonly CVarDef<string> PandaStatusBind =
+            CVarDef.Create("white.panda_status_bind", "localhost:4444", CVar.SERVERONLY | CVar.ARCHIVE);
+
+        public static readonly CVarDef<int> PandaStatusMaxConnections =
+            CVarDef.Create("white.panda_status_max_connections", 100, CVar.SERVERONLY);
+
+        public static readonly CVarDef<string> PandaToken =
+            CVarDef.Create("white.panda_token", "ass", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+        public static readonly CVarDef<string> UtkaClientBind =
+            CVarDef.Create("white.utka_client_bind", "localhost:4447/WeatherForecast", CVar.SERVERONLY);
     }
 }

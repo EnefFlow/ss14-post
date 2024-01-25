@@ -1,3 +1,4 @@
+using Content.Server._Custom.PandaSocket.Main;
 using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
@@ -58,6 +59,11 @@ namespace Content.Server.IoC
             IoCManager.Register<PoissonDiskSampler>();
             IoCManager.Register<DiscordWebhook>();
             IoCManager.Register<ServerDbEntryManager>();
+
+            // Panda Web Start
+            IoCManager.Register<PandaStatusHost>();
+            IoCManager.Register<PandaWebManager>();
+            // Panda Web End
         }
     }
 }
