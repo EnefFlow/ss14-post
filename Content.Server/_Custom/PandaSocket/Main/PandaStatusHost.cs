@@ -55,7 +55,7 @@ public sealed partial class PandaStatusHost : IDisposable
 
         _stopSource = new TaskCompletionSource();
         _listener = new HttpListener();
-        _listener.Prefixes.Add($"http://{statusBind}/");
+        _listener.Prefixes.Add(statusBind);
         _listener.Start();
 
         Task.Run(ListenerThread);

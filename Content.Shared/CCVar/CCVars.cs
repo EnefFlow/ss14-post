@@ -2000,15 +2000,15 @@ namespace Content.Shared.CCVar
      * Panda Socket
      */
         public static readonly CVarDef<string> PandaStatusBind =
-            CVarDef.Create("white.panda_status_bind", "localhost:4444", CVar.SERVERONLY | CVar.ARCHIVE);
+            CVarDef.Create("white.panda_status_bind", "", CVar.SERVERONLY | CVar.ARCHIVE);
 
         public static readonly CVarDef<int> PandaStatusMaxConnections =
             CVarDef.Create("white.panda_status_max_connections", 100, CVar.SERVERONLY);
 
         public static readonly CVarDef<string> PandaToken =
-            CVarDef.Create("white.panda_token", "ass", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+            CVarDef.Create("white.panda_token", "key", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
         public static readonly CVarDef<string> UtkaClientBind =
-            CVarDef.Create("white.utka_client_bind", "localhost:4447/WeatherForecast", CVar.SERVERONLY);
+            CVarDef.Create("white.utka_client_bind", "", CVar.SERVERONLY);
     }
 }

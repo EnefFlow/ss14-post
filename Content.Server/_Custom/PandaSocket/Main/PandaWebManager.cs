@@ -40,7 +40,7 @@ public sealed class PandaWebManager
             jObj.Children().Cast<JProperty>()
                 .Select(jp=>jp.Name + "=" + HttpUtility.UrlEncode(jp.Value.ToString())));
 
-        var request = $"http://{_utkaUri}?token={_token}&{query}";
+        var request = $"{_utkaUri}?token={_token}&{query}";
 
         try
         {
@@ -59,7 +59,7 @@ public sealed class PandaWebManager
 
         message.Token = _token;
 
-        var request = $"http://{_utkaUri}";
+        var request = _utkaUri;
         var json = JsonSerializer.Serialize(message, message.GetType());
 
         HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");

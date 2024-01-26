@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Runtime.InteropServices;
+using Content.Server._Custom.PandaSocket.Main;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Administration.Systems;
@@ -45,6 +46,8 @@ namespace Content.Server.Chat.Managers
         [Dependency] private readonly IEntityManager _entityManager = default!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
+
+        [Dependency] private readonly PandaWebManager _pandaWeb = default!; // Panda Web edit
 
         /// <summary>
         /// The maximum length a player-sent message can be sent
@@ -240,6 +243,17 @@ namespace Content.Server.Chat.Managers
             ChatMessageToAll(ChatChannel.OOC, message, wrappedMessage, EntityUid.Invalid, hideChat: false, recordReplay: true, colorOverride: colorOverride, author: player.UserId);
             _mommiLink.SendOOCMessage(player.Name, message);
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"OOC from {player:Player}: {message}");
+
+            // Panda Web Start
+            var toUtkaMessage = new UtkaChatMessageEvent()
+            {
+                Command = "ooc",
+                Ckey = player.Name,
+                Message = message,
+            };
+
+            _pandaWeb.SendBotPostMessage(toUtkaMessage);
+            // Panda Web End
         }
 
         private void SendAdminChat(ICommonSession player, string message)
